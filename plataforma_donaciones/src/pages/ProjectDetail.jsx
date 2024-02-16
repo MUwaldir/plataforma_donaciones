@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import DonationForm from "../components/Donate/DonationForm";
 
 const ProjectDetail = () => {
-  const YOUR_GOOGLE_MAPS_API_KEY = "dddddddddddddddddddddddddddd";
+//   const YOUR_GOOGLE_MAPS_API_KEY = "dddddddddddddddddddddddddddd";
   // Obtener el ID del proyecto de los parámetros de la URL
   const { id } = useParams();
 
