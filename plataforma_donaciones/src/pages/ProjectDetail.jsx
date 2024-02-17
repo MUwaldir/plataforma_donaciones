@@ -108,11 +108,12 @@ const ProjectDetail = () => {
                     src={`https://www.google.com/maps/embed/v1/place?key=${YOUR_GOOGLE_MAPS_API_KEY}&q=${encodeURIComponent(project.location)}`}
                     allowFullScreen
                 ></iframe> */}
-        <img
+        {/* <img
           src="https://www.google.com/maps/d/thumbnail?mid=1u5ohaLlFfL6cQ6LV68zmIgLRCA8&hl=en_US"
           alt="Mapa de ubicación"
           style={{ width: "100%", height: "400px", objectFit: "cover" }}
-        />
+        /> */}
+        <p><iframe id="map-canvas"  className="w-full" width="600"  height="450"   scrolling="no"  src="https://maps.google.com/maps?width=100%&amp;height=100%&amp;hl=en&amp;q=africa&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">Powered by <a href="https://www.googlemapsgenerator.com">google maps embed</a> and <a href="https://utaninkomst.se/">sms lån direkt utbetalning utan inkomst</a></iframe></p>
       </div>
       <DonationForm projectId={project.id} />
     </div>

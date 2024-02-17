@@ -11,9 +11,9 @@ const Signup = () => {
     }
 
     return (
-        <div className='flex justify-center' >
+        <div className='flex justify-center mt-2' >
 
-        <form onSubmit={handleSubmit} className="bg-white shadow-lg rounded-lg p-6">
+        <form onSubmit={handleSubmit} className="bg-white shadow-lg rounded-lg p-6  md:w-1/3">
             <h2 className="text-xl font-bold mb-4">Registro</h2>
             <div className="mb-4">
                 <label htmlFor="fullName" className="block text-gray-700">Nombre Completo:</label>

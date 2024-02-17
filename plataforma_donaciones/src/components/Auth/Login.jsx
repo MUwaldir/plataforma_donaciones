@@ -16,7 +16,7 @@ const Login = () => {
     return (
         <section className='flex justify-center'>
 
-        <form onSubmit={handleSubmit} className="bg-white shadow-lg rounded-lg p-6 border-spacing-1 border-x-2 mt-3">
+        <form onSubmit={handleSubmit} className="bg-white shadow-lg rounded-lg p-6 border-spacing-1 border-x-2 mt-3 md:w-1/3">
             <h2 className="text-xl font-bold mb-4">Iniciar Sesión</h2>
             <div className="mb-4">
                 <label htmlFor="email" className="block text-gray-700">Correo Electrónico:</label>

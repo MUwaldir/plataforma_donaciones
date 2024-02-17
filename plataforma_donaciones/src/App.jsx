@@ -11,7 +11,7 @@ import ProjectDetail from './pages/ProjectDetail';
 
 function App() {
   return (
-    <>
+    < >
     
     <Router>
       <Navbar />
