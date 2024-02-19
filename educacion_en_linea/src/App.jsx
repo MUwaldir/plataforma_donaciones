@@ -10,6 +10,7 @@ import Contact from "./pages/Contact";
 import Login from "./components/Auth/Login";
 import Signup from "./components/Auth/Signup";
 import Courses from "./pages/Courses";
+import LessonDetail from "./components/Lesson/LessonDetail";
 
 function App() {
   const courses = [
@@ -37,6 +38,7 @@ function App() {
           <Route exact path="/contact" element={<Contact />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Signup />} />
+          <Route exact path="/lessondetail/:id" element={<LessonDetail />} />
           {/* Agrega más rutas aquí si es necesario */}
           {/* <Route element={<NotFound/>} /> */}
         </Routes>

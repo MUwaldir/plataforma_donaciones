@@ -27,6 +27,20 @@ const CourseDetail = () => {
           duration: "1.5 horas",
           videoUrl: "https://www.youtube.com/watch?v=ATHRCTVBI2M", // Agrega la URL del video para la lección 2
         },
+        {
+          id: 3,
+          title: "Lección 3 de Matemáticas",
+          content: "Contenido de la lección 2 de Matemáticas",
+          duration: "1.5 horas",
+          videoUrl: "https://www.youtube.com/watch?v=ATHRCTVBI2M", // Agrega la URL del video para la lección 2
+        },
+        {
+          id: 4,
+          title: "Lección 4 de Matemáticas",
+          content: "Contenido de la lección 1 de Matemáticas",
+          duration: "2 horas",
+          videoUrl: "https://www.youtube.com/watch?v=9XV9OSnF8gU", // Agrega la URL del video para la lección 1
+        },
         // Otras lecciones...
       ],
     },
@@ -38,22 +52,36 @@ const CourseDetail = () => {
       description:
         "Este curso explora diversas disciplinas científicas, como física, química y biología.",
       lessons: [
-      {
-        id: 1,
-        title: "Lección 1 de Matemáticas",
-        content: "Contenido de la lección 1 de Matemáticas",
-        duration: "2 horas",
-        videoUrl: "https://www.youtube.com/watch?v=9XV9OSnF8gU", // Agrega la URL del video para la lección 1
-      },
-      {
-        id: 2,
-        title: "Lección 2 de Matemáticas",
-        content: "Contenido de la lección 2 de Matemáticas",
-        duration: "1.5 horas",
-        videoUrl: "https://www.youtube.com/watch?v=ATHRCTVBI2M", // Agrega la URL del video para la lección 2
-      },
-      // Otras lecciones...
-    ],
+        {
+          id: 1,
+          title: "Lección 1 de Matemáticas",
+          content: "Contenido de la lección 1 de Matemáticas",
+          duration: "2 horas",
+          videoUrl: "https://www.youtube.com/watch?v=9XV9OSnF8gU", // Agrega la URL del video para la lección 1
+        },
+        {
+          id: 2,
+          title: "Lección 2 de Matemáticas",
+          content: "Contenido de la lección 2 de Matemáticas",
+          duration: "1.5 horas",
+          videoUrl: "https://www.youtube.com/watch?v=ATHRCTVBI2M", // Agrega la URL del video para la lección 2
+        },
+        {
+            id: 3,
+            title: "Lección 3 de Matemáticas",
+            content: "Contenido de la lección 2 de Matemáticas",
+            duration: "1.5 horas",
+            videoUrl: "https://www.youtube.com/watch?v=ATHRCTVBI2M", // Agrega la URL del video para la lección 2
+          },
+          {
+            id: 4,
+            title: "Lección 4 de Matemáticas",
+            content: "Contenido de la lección 1 de Matemáticas",
+            duration: "2 horas",
+            videoUrl: "https://www.youtube.com/watch?v=9XV9OSnF8gU", // Agrega la URL del video para la lección 1
+          },
+        // Otras lecciones...
+      ],
     },
     {
       id: 3,
@@ -63,22 +91,36 @@ const CourseDetail = () => {
       description:
         "Este curso ofrece un recorrido por diferentes períodos y eventos históricos.",
       lessons: [
-      {
-        id: 1,
-        title: "Lección 1 de Matemáticas",
-        content: "Contenido de la lección 1 de Matemáticas",
-        duration: "2 horas",
-        videoUrl: "https://www.youtube.com/watch?v=9XV9OSnF8gU", // Agrega la URL del video para la lección 1
-      },
-      {
-        id: 2,
-        title: "Lección 2 de Matemáticas",
-        content: "Contenido de la lección 2 de Matemáticas",
-        duration: "1.5 horas",
-        videoUrl: "https://www.youtube.com/watch?v=ATHRCTVBI2M", // Agrega la URL del video para la lección 2
-      },
-      // Otras lecciones...
-    ],
+        {
+          id: 1,
+          title: "Lección 1 de Matemáticas",
+          content: "Contenido de la lección 1 de Matemáticas",
+          duration: "2 horas",
+          videoUrl: "https://www.youtube.com/watch?v=9XV9OSnF8gU", // Agrega la URL del video para la lección 1
+        },
+        {
+          id: 2,
+          title: "Lección 2 de Matemáticas",
+          content: "Contenido de la lección 2 de Matemáticas",
+          duration: "1.5 horas",
+          videoUrl: "https://www.youtube.com/watch?v=ATHRCTVBI2M", // Agrega la URL del video para la lección 2
+        },
+        {
+            id: 3,
+            title: "Lección 3 de Matemáticas",
+            content: "Contenido de la lección 2 de Matemáticas",
+            duration: "1.5 horas",
+            videoUrl: "https://www.youtube.com/watch?v=ATHRCTVBI2M", // Agrega la URL del video para la lección 2
+          },
+          {
+            id: 4,
+            title: "Lección 4 de Matemáticas",
+            content: "Contenido de la lección 1 de Matemáticas",
+            duration: "2 horas",
+            videoUrl: "https://www.youtube.com/watch?v=9XV9OSnF8gU", // Agrega la URL del video para la lección 1
+          },
+        // Otras lecciones...
+      ],
     },
     {
       id: 4,
@@ -88,22 +130,22 @@ const CourseDetail = () => {
       description:
         "Este curso enseña los fundamentos de la programación y el desarrollo de software.",
       lessons: [
-      {
-        id: 1,
-        title: "Lección 1 de Matemáticas",
-        content: "Contenido de la lección 1 de Matemáticas",
-        duration: "2 horas",
-        videoUrl: "https://www.youtube.com/watch?v=9XV9OSnF8gU", // Agrega la URL del video para la lección 1
-      },
-      {
-        id: 2,
-        title: "Lección 2 de Matemáticas",
-        content: "Contenido de la lección 2 de Matemáticas",
-        duration: "1.5 horas",
-        videoUrl: "https://www.youtube.com/watch?v=ATHRCTVBI2M", // Agrega la URL del video para la lección 2
-      },
-      // Otras lecciones...
-    ],
+        {
+          id: 1,
+          title: "Lección 1 de Matemáticas",
+          content: "Contenido de la lección 1 de Matemáticas",
+          duration: "2 horas",
+          videoUrl: "https://www.youtube.com/watch?v=9XV9OSnF8gU", // Agrega la URL del video para la lección 1
+        },
+        {
+          id: 2,
+          title: "Lección 2 de Matemáticas",
+          content: "Contenido de la lección 2 de Matemáticas",
+          duration: "1.5 horas",
+          videoUrl: "https://www.youtube.com/watch?v=ATHRCTVBI2M", // Agrega la URL del video para la lección 2
+        },
+        // Otras lecciones...
+      ],
     },
     {
       id: 5,
@@ -113,22 +155,22 @@ const CourseDetail = () => {
       description:
         "Este curso explora obras literarias destacadas y teorías literarias.",
       lessons: [
-      {
-        id: 1,
-        title: "Lección 1 de Matemáticas",
-        content: "Contenido de la lección 1 de Matemáticas",
-        duration: "2 horas",
-        videoUrl: "https://www.youtube.com/watch?v=9XV9OSnF8gU", // Agrega la URL del video para la lección 1
-      },
-      {
-        id: 2,
-        title: "Lección 2 de Matemáticas",
-        content: "Contenido de la lección 2 de Matemáticas",
-        duration: "1.5 horas",
-        videoUrl: "https://www.youtube.com/watch?v=ATHRCTVBI2M", // Agrega la URL del video para la lección 2
-      },
-      // Otras lecciones...
-    ],
+        {
+          id: 1,
+          title: "Lección 1 de Matemáticas",
+          content: "Contenido de la lección 1 de Matemáticas",
+          duration: "2 horas",
+          videoUrl: "https://www.youtube.com/watch?v=9XV9OSnF8gU", // Agrega la URL del video para la lección 1
+        },
+        {
+          id: 2,
+          title: "Lección 2 de Matemáticas",
+          content: "Contenido de la lección 2 de Matemáticas",
+          duration: "1.5 horas",
+          videoUrl: "https://www.youtube.com/watch?v=ATHRCTVBI2M", // Agrega la URL del video para la lección 2
+        },
+        // Otras lecciones...
+      ],
     },
     {
       id: 6,
@@ -138,22 +180,22 @@ const CourseDetail = () => {
       description:
         "Este curso abarca diferentes formas de arte, desde la pintura hasta la escultura.",
       lessons: [
-      {
-        id: 1,
-        title: "Lección 1 de Matemáticas",
-        content: "Contenido de la lección 1 de Matemáticas",
-        duration: "2 horas",
-        videoUrl: "https://www.youtube.com/watch?v=9XV9OSnF8gU", // Agrega la URL del video para la lección 1
-      },
-      {
-        id: 2,
-        title: "Lección 2 de Matemáticas",
-        content: "Contenido de la lección 2 de Matemáticas",
-        duration: "1.5 horas",
-        videoUrl: "https://www.youtube.com/watch?v=ATHRCTVBI2M", // Agrega la URL del video para la lección 2
-      },
-      // Otras lecciones...
-    ],
+        {
+          id: 1,
+          title: "Lección 1 de Matemáticas",
+          content: "Contenido de la lección 1 de Matemáticas",
+          duration: "2 horas",
+          videoUrl: "https://www.youtube.com/watch?v=9XV9OSnF8gU", // Agrega la URL del video para la lección 1
+        },
+        {
+          id: 2,
+          title: "Lección 2 de Matemáticas",
+          content: "Contenido de la lección 2 de Matemáticas",
+          duration: "1.5 horas",
+          videoUrl: "https://www.youtube.com/watch?v=ATHRCTVBI2M", // Agrega la URL del video para la lección 2
+        },
+        // Otras lecciones...
+      ],
     },
     {
       id: 7,
@@ -163,22 +205,22 @@ const CourseDetail = () => {
       description:
         "Este curso cubre aspectos teóricos y prácticos de la música, incluyendo composición e interpretación.",
       lessons: [
-      {
-        id: 1,
-        title: "Lección 1 de Matemáticas",
-        content: "Contenido de la lección 1 de Matemáticas",
-        duration: "2 horas",
-        videoUrl: "https://www.youtube.com/watch?v=9XV9OSnF8gU", // Agrega la URL del video para la lección 1
-      },
-      {
-        id: 2,
-        title: "Lección 2 de Matemáticas",
-        content: "Contenido de la lección 2 de Matemáticas",
-        duration: "1.5 horas",
-        videoUrl: "https://www.youtube.com/watch?v=ATHRCTVBI2M", // Agrega la URL del video para la lección 2
-      },
-      // Otras lecciones...
-    ],
+        {
+          id: 1,
+          title: "Lección 1 de Matemáticas",
+          content: "Contenido de la lección 1 de Matemáticas",
+          duration: "2 horas",
+          videoUrl: "https://www.youtube.com/watch?v=9XV9OSnF8gU", // Agrega la URL del video para la lección 1
+        },
+        {
+          id: 2,
+          title: "Lección 2 de Matemáticas",
+          content: "Contenido de la lección 2 de Matemáticas",
+          duration: "1.5 horas",
+          videoUrl: "https://www.youtube.com/watch?v=ATHRCTVBI2M", // Agrega la URL del video para la lección 2
+        },
+        // Otras lecciones...
+      ],
     },
     {
       id: 8,
@@ -188,22 +230,22 @@ const CourseDetail = () => {
       description:
         "Este curso enseña diferentes idiomas, como inglés, español, francés, entre otros.",
       lessons: [
-      {
-        id: 1,
-        title: "Lección 1 de Matemáticas",
-        content: "Contenido de la lección 1 de Matemáticas",
-        duration: "2 horas",
-        videoUrl: "https://www.youtube.com/watch?v=9XV9OSnF8gU", // Agrega la URL del video para la lección 1
-      },
-      {
-        id: 2,
-        title: "Lección 2 de Matemáticas",
-        content: "Contenido de la lección 2 de Matemáticas",
-        duration: "1.5 horas",
-        videoUrl: "https://www.youtube.com/watch?v=ATHRCTVBI2M", // Agrega la URL del video para la lección 2
-      },
-      // Otras lecciones...
-    ],
+        {
+          id: 1,
+          title: "Lección 1 de Matemáticas",
+          content: "Contenido de la lección 1 de Matemáticas",
+          duration: "2 horas",
+          videoUrl: "https://www.youtube.com/watch?v=9XV9OSnF8gU", // Agrega la URL del video para la lección 1
+        },
+        {
+          id: 2,
+          title: "Lección 2 de Matemáticas",
+          content: "Contenido de la lección 2 de Matemáticas",
+          duration: "1.5 horas",
+          videoUrl: "https://www.youtube.com/watch?v=ATHRCTVBI2M", // Agrega la URL del video para la lección 2
+        },
+        // Otras lecciones...
+      ],
     },
     {
       id: 9,
@@ -213,22 +255,22 @@ const CourseDetail = () => {
       description:
         "Este curso introduce conceptos económicos fundamentales y su aplicación en el mundo real.",
       lessons: [
-      {
-        id: 1,
-        title: "Lección 1 de Matemáticas",
-        content: "Contenido de la lección 1 de Matemáticas",
-        duration: "2 horas",
-        videoUrl: "https://www.youtube.com/watch?v=9XV9OSnF8gU", // Agrega la URL del video para la lección 1
-      },
-      {
-        id: 2,
-        title: "Lección 2 de Matemáticas",
-        content: "Contenido de la lección 2 de Matemáticas",
-        duration: "1.5 horas",
-        videoUrl: "https://www.youtube.com/watch?v=ATHRCTVBI2M", // Agrega la URL del video para la lección 2
-      },
-      // Otras lecciones...
-    ],
+        {
+          id: 1,
+          title: "Lección 1 de Matemáticas",
+          content: "Contenido de la lección 1 de Matemáticas",
+          duration: "2 horas",
+          videoUrl: "https://www.youtube.com/watch?v=9XV9OSnF8gU", // Agrega la URL del video para la lección 1
+        },
+        {
+          id: 2,
+          title: "Lección 2 de Matemáticas",
+          content: "Contenido de la lección 2 de Matemáticas",
+          duration: "1.5 horas",
+          videoUrl: "https://www.youtube.com/watch?v=ATHRCTVBI2M", // Agrega la URL del video para la lección 2
+        },
+        // Otras lecciones...
+      ],
     },
     {
       id: 10,
@@ -238,34 +280,41 @@ const CourseDetail = () => {
       description:
         "Este curso explora temas filosóficos como la ética, la metafísica y la lógica.",
       lessons: [
-      {
-        id: 1,
-        title: "Lección 1 de Matemáticas",
-        content: "Contenido de la lección 1 de Matemáticas",
-        duration: "2 horas",
-        videoUrl: "https://www.youtube.com/watch?v=9XV9OSnF8gU", // Agrega la URL del video para la lección 1
-      },
-      {
-        id: 2,
-        title: "Lección 2 de Matemáticas",
-        content: "Contenido de la lección 2 de Matemáticas",
-        duration: "1.5 horas",
-        videoUrl: "https://www.youtube.com/watch?v=ATHRCTVBI2M", // Agrega la URL del video para la lección 2
-      },
-      // Otras lecciones...
-    ],
+        {
+          id: 1,
+          title: "Lección 1 de Matemáticas",
+          content: "Contenido de la lección 1 de Matemáticas",
+          duration: "2 horas",
+          videoUrl: "https://www.youtube.com/watch?v=9XV9OSnF8gU", // Agrega la URL del video para la lección 1
+        },
+        {
+          id: 2,
+          title: "Lección 2 de Matemáticas",
+          content: "Contenido de la lección 2 de Matemáticas",
+          duration: "1.5 horas",
+          videoUrl: "https://www.youtube.com/watch?v=ATHRCTVBI2M", // Agrega la URL del video para la lección 2
+        },
+        // Otras lecciones...
+      ],
     },
   ];
 
   const { id } = useParams();
   console.log(id);
   const course = courses.find((c) => c.id === parseInt(id));
-  console.log(course)
+  console.log(course);
   return (
     <div className="container mx-auto py-8 px-4">
       <h2 className="text-3xl font-bold mb-4">{course.title}</h2>
       <p className="text-gray-600 mb-4">{course.description}</p>
       <h3 className="text-xl font-semibold mb-2">Clases</h3>
+      {/* <div>
+        {course.lessons.map((lesson,index) => (
+          <ol key={index}>
+            <ul key={lesson.id}>{lesson.title}</ul>
+          </ol>
+        ))}
+      </div> */}
       <LessonList lessons={course.lessons} />
     </div>
   );
