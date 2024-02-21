@@ -29,7 +29,11 @@ function App() {
   return (
     <>
       <Router>
+        <div className="flex flex-col min-h-screen ">
+
         <Navbar />
+        
+
         <Routes>
           <Route exact path="/" element={<Home importantCourses={courses} />} />
           <Route exact path="/courses" element={<Courses courses={courses} />} />
@@ -43,7 +47,9 @@ function App() {
           {/* Agrega más rutas aquí si es necesario */}
           {/* <Route element={<NotFound/>} /> */}
         </Routes>
+    
         <Footer />
+        </div>
       </Router>
     </>
   );
