@@ -33,7 +33,8 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home importantCourses={courses} />} />
           <Route exact path="/courses" element={<Courses courses={courses} />} />
-          <Route exact path="/courses/:id" element={<CourseDetail />} />
+          <Route exact path="/course/:id" element={<CourseDetail />} />
+          <Route exact path="/courses/course/:id" element={<CourseDetail />} />
           <Route exact path="/about" element={<About />} />
           <Route exact path="/contact" element={<Contact />} />
           <Route exact path="/login" element={<Login />} />
