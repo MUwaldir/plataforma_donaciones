@@ -304,19 +304,20 @@ const CourseDetail = () => {
   const course = courses.find((c) => c.id === parseInt(id));
   console.log(course);
   return (
-    <div className="container mx-auto py-8 px-4">
+    <div className="p-8 flex-grow bg-blue-500 text-white">
+  <div className="grid grid-cols-2 gap-8">
+    <div>
       <h2 className="text-3xl font-bold mb-4">{course.title}</h2>
-      <p className="text-gray-600 mb-4">{course.description}</p>
+      <p className="text-gray-200 mb-4">{course.description}</p>
       <h3 className="text-xl font-semibold mb-2">Clases</h3>
-      {/* <div>
-        {course.lessons.map((lesson,index) => (
-          <ol key={index}>
-            <ul key={lesson.id}>{lesson.title}</ul>
-          </ol>
-        ))}
-      </div> */}
       <LessonList lessons={course.lessons} />
     </div>
+    <article>
+      <img src="https://images.pexels.com/photos/3729557/pexels-photo-3729557.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="" className="rounded-lg shadow-xl" />
+    </article>
+  </div>
+</div>
+
   );
 };
 
