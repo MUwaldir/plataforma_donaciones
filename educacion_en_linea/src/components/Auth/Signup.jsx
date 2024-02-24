@@ -59,9 +59,9 @@ const handleCloseModal = () => {
     setModalOpen(false);
   };
   return (
-    <div className="container mx-auto mt-8 flex-grow p-5">
+    <div className="flex-grow flex flex-col justify-evenly items-center bg-blue-500 text-white">
       <h2 className="text-2xl font-bold mb-4 text-center">Registrarse</h2>
-      <div className="max-w-md mx-auto">
+      <div className="max-w-md w-full md:w-1/2 p-5">
         <div className="mb-4">
           <label htmlFor="email" className="block text-sm font-semibold mb-1">Correo Electrónico</label>
           <input
@@ -96,7 +96,7 @@ const handleCloseModal = () => {
           {errors.confirmPassword && <p className="text-red-500 text-sm mt-1">{errors.confirmPassword}</p>}
         </div>
         <button
-          className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors"
+          className="bg-blue-700 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors"
           onClick={handleSignup}
         >
           Registrarse

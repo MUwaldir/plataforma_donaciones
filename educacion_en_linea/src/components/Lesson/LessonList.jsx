@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import LessonDetail from "./LessonDetail";
+
 
 const LessonList = ({ lessons }) => {
   return (

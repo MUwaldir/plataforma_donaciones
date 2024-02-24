@@ -57,7 +57,7 @@ const Login = () => {
   };
   return (
     // <div className=" flex flex-col justify-center " style={{height:'74vh'}}>
-    <div className="flex-grow  h-full flex flex-col justify-evenly p-4">
+    <div className="flex-grow  h-full flex flex-col justify-evenly p-4 bg-blue-500 text-white">
       <h2 className="text-2xl font-bold  text-center ">Iniciar Sesión</h2>
       <div className="max-w-md mx-auto w-full md:w-1/2">
         <div className="mb-4">
@@ -98,7 +98,7 @@ const Login = () => {
           )}
         </div>
         <button
-          className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors"
+          className="bg-blue-800 text-white px-4 py-2 rounded-md hover:bg-blue-500 transition-colors"
           onClick={handleLogin}
         >
           Iniciar Sesión

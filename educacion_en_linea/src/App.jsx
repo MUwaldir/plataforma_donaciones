@@ -11,6 +11,7 @@ import Login from "./components/Auth/Login";
 import Signup from "./components/Auth/Signup";
 import Courses from "./pages/Courses";
 import LessonDetail from "./components/Lesson/LessonDetail";
+import NotFoundPage from "./components/Layout/NotFoundPage";
 
 function App() {
   const courses = [
@@ -29,7 +30,7 @@ function App() {
   return (
     <>
       <Router>
-        <div className="flex flex-col min-h-screen ">
+        <div className="flex flex-col min-h-screen  bg-blue-500">
 
         <Navbar />
         
@@ -37,13 +38,14 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home importantCourses={courses} />} />
           <Route exact path="/courses" element={<Courses courses={courses} />} />
-          <Route exact path="/course/:id" element={<CourseDetail />} />
+          {/* <Route exact path="/course/:id" element={<CourseDetail />} /> */}
           <Route exact path="/courses/course/:id" element={<CourseDetail />} />
           <Route exact path="/about" element={<About />} />
           <Route exact path="/contact" element={<Contact />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Signup />} />
           <Route exact path="/lessondetail/:id" element={<LessonDetail />} />
+          <Route path="*"  element={<NotFoundPage/>} />
           {/* Agrega más rutas aquí si es necesario */}
           {/* <Route element={<NotFound/>} /> */}
         </Routes>

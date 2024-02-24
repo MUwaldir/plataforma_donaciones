@@ -4,7 +4,7 @@ const  contactBackground = "https://media.istockphoto.com/id/1311598658/es/foto/
 const Contact = () => {
   return (
     <div
-      className="min-h-screen flex flex-col justify-center items-center"
+      className="min-h-screen flex flex-col justify-center items-center "
       style={{
         backgroundImage: `url(${contactBackground})`,
         backgroundSize: "cover",
