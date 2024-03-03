@@ -4,7 +4,7 @@ function Pagination({handleNextPage,handlePrevPage,pagina}) {
    
 
     return (
-        <div className="flex justify-center my-4">
+        <div className="flex justify-center  h-10 items-center mb-3 mt-1">
             <button
               onClick={handlePrevPage}
               disabled={pagina === 1}

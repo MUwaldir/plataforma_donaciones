@@ -8,6 +8,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import Pagination from "./components/Layout/Pagination";
+import ImagenOfDay from "./pages/ImagenOfDay";
 
 const App = () => {
   const [nasaData, setNasaData] = useState([]);
@@ -82,6 +83,8 @@ const App = () => {
               }
             ></Route>
             <Route path="/info/:id" element={<NasaInfo />}></Route>
+            <Route path="/img_of_day" element={<ImagenOfDay />}></Route>
+
             <Route path="*" element={<NotFoundPage />}></Route>
           </Routes>
 
