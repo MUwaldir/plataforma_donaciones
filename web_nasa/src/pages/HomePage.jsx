@@ -16,7 +16,7 @@ function HomePage({
 
   return (
     <div className="flex-grow w-full">
-      <div className="flex flex-col justify-between sm:flex-row  sm:justify-around  items-center ">
+      <div className="flex flex-col justify-between sm:flex-row  sm:justify-around  items-center h-20">
         <h2 className="text-3xl font-bold mb-4">Camara Curiosity</h2>
         <Pagination
           handleNextPage={handleNextPage}
@@ -29,14 +29,16 @@ function HomePage({
           onChange={handleSearchChange}
         />
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 px-4">
         {filteredNasaData.map((item) => (
           <NasaCard
             key={item.id}
-            name_camera={item.camera.full_name}
+            name_camera={item.camera.name}
+            fullname_camera={item.camera.full_name}
             fecha={item.earth_date}
             imageUrl={item.img_src}
             rover_name={item.rover.name}
+            estado = {item.rover.status}
           />
         ))}
       </div>

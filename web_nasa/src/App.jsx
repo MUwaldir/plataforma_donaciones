@@ -9,11 +9,12 @@ import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import Pagination from "./components/Layout/Pagination";
 import ImagenOfDay from "./pages/ImagenOfDay";
+import dataNasa from "./utils/dataNasa";
 
 const App = () => {
   const [nasaData, setNasaData] = useState([]);
   const [pagina, setPagina] = useState(1);
-  const API = "FTv2gz3c7DcSlr9FblUYzW2luWvAImpwfO1rNq36";
+  // const KEYAPI = "FTv2gz3c7DcSlr9FblUYzW2luWvAImpwfO1rNq36";
   // const API_URL =
   //   `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=${API}`;
 
@@ -28,14 +29,15 @@ const App = () => {
   //     });
   // }, []);
   const fetchNasaData = (page) => {
-    const API_URL = `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&page=${page}&api_key=${API}`;
+    // const API_URL = `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&page=${page}&api_key=${KEYAPI}`;
 
-    fetch(API_URL)
-      .then((response) => response.json())
-      .then((data) => {
-        setNasaData(data.photos);
-        console.log(data);
-      });
+    // fetch(API_URL)
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     setNasaData(data.photos);
+    //     console.log(data);
+    //   });
+    setNasaData(dataNasa.photos)
   };
 
   useEffect(() => {
