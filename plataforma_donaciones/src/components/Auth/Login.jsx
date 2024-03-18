@@ -1,16 +1,31 @@
 import React, { useState } from 'react';
 
+const URL_API = 'http://localhost:3001/api/login';
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         // Lógica para iniciar sesión
         console.log({
             email,
             password
         })
+        const dataLogin = {
+            email,
+            password
+        }
+        const response = await fetch(URL_API,{
+            method : 'POST',
+            headers: {
+                'Content-Type': 'application/json' // Puedes ajustar los encabezados según lo necesites
+              },
+            body: JSON.stringify(dataLogin)
+            })
+        const data = await response.json()
+        console.log(data)
     }
 
     return (
