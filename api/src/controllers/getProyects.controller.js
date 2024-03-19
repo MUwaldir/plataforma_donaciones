@@ -8,7 +8,7 @@ const getProjects = async (req, res, next) => {
       .populate('equipo')
       .populate('testimonios');
       
-    res.status(200).json({ proyectos });
+    res.status(200).json(proyectos);
   } catch (error) {
     console.error("Error al obtener los proyectos:", error);
     res.status(500).json({ message: "Error al obtener los proyectos" });
