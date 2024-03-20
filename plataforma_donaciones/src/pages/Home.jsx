@@ -12,7 +12,7 @@ const Home = () => {
   }, []);
 console.log(projects)
   return (
-    <div className="container mx-auto py-8 ">
+    <div className="flex-grow container mx-auto py-8 ">
       <h1 className="text-3xl font-bold mb-8">Explora Proyectos</h1>
       <ProjectList projects={projects} />
     </div>

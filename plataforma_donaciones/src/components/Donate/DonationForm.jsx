@@ -7,7 +7,13 @@ const donationImage =
 const URL_API_STRIPE = "http://localhost:3001/api/create-checkout-session/";
 const URL_API_PAYPAL = "http://localhost:3001/api/create-order/";
 
-const DonationForm = ({ nombre, description, id }) => {
+const DonationForm = ({
+  nombre,
+  description,
+  id,
+  cuentaData,
+  monederoData,
+}) => {
   const navigate = useNavigate();
   const [amount, setAmount] = useState("");
   const [paymentMethod, setPaymentMethod] = useState("card");
@@ -41,7 +47,6 @@ const DonationForm = ({ nombre, description, id }) => {
       });
       const data = await response.json();
       window.location.href = data.links[1].href;
-
     }
     console.log(amount, paymentMethod);
     // Puedes agregar lógica adicional aquí, como enviar la donación a través de una API
@@ -131,9 +136,9 @@ const DonationForm = ({ nombre, description, id }) => {
                 />
                 <section>
                   <p>Número de cuenta dólares:</p>
-                  <p>002-194-001967786134-96</p>
+                  <p>{cuentaData[1].dolares}</p>
                   <p>Número de cuenta soles:</p>
-                  <p>002-193-001853946025-15</p>
+                  <p>{cuentaData[0].soles}</p>
                 </section>
               </div>
             </div>
@@ -149,8 +154,8 @@ const DonationForm = ({ nombre, description, id }) => {
                   className="h-8 mr-2 rounded-md"
                 />
                 <section>
-                  <p>Yape : 976655255</p>
-                  <p>Nombre: Nombre Nombre Apellido Apellido</p>
+                  <p>Yape : {monederoData[0].yape}</p>
+                  <p>Nombre: {monederoData[0].nombre || 'Nombre Nombre Apellido Apellido'}</p>
                 </section>
               </div>
               <div className="flex items-center">
@@ -160,8 +165,8 @@ const DonationForm = ({ nombre, description, id }) => {
                   className="h-8 mr-2 rounded-md"
                 />
                 <section>
-                  <p>Plin : 976655255</p>
-                  <p>Nombre: Nombre Nombre Apellido Apellido</p>
+                  <p>Plin : {monederoData[1].plin}</p>
+                  <p>Nombre: {monederoData[1].nombre || 'Nombre Nombre Apellido Apellido'}</p>
                 </section>
               </div>
             </div>
