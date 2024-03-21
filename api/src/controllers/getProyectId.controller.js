@@ -8,7 +8,7 @@ const getProjectId = async (req, res, next) => {
       .populate("contactos")
       .populate("equipo")
       .populate("testimonios");
-
+    
     res.status(200).json(proyecto);
   } catch (error) {
     console.error("Error al obtener los proyectos:", error);
