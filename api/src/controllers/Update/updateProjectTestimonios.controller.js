@@ -1,4 +1,4 @@
-import Testimonio from "../models/TestimonioSchema.js";
+import Testimonio from "../../models/TestimonioSchema.js";
 
 const updateProjectTestimonio = async (req, res) => {
   try {

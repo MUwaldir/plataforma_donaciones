@@ -1,5 +1,5 @@
-import Categoria from "../models/CategoriaSchema.js";
-import Proyecto from "../models/ProyectoSchema.js";
+import Categoria from "../../models/CategoriaSchema.js";
+import Proyecto from "../../models/ProyectoSchema.js";
 
 const updateProjectGeneral = async (req, res, next) => {
   try {

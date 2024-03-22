@@ -1,4 +1,4 @@
-import Contacto from "../models/ContactoSchema.js";
+import Contacto from "../../models/ContactoSchema.js";
 
 const updateProjectContacto = async (req, res) => {
   const { idcontacto } = req.params;

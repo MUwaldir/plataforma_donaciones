@@ -1,8 +1,8 @@
-import Categoria from "../models/CategoriaSchema.js";
-import Contacto from "../models/ContactoSchema.js";
-import Equipo from "../models/EquipoSchema.js";
-import Proyecto from "../models/ProyectoSchema.js";
-import Testimonio from "../models/TestimonioSchema.js";
+import Categoria from "../../models/CategoriaSchema.js";
+import Contacto from "../../models/ContactoSchema.js";
+import Equipo from "../../models/EquipoSchema.js";
+import Proyecto from "../../models/ProyectoSchema.js";
+import Testimonio from "../../models/TestimonioSchema.js";
 
 const updateProject = async (req, res, next) => {
   try {
