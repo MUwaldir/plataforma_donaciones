@@ -1,7 +1,7 @@
 // Sidebar.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FiHome, FiUsers } from 'react-icons/fi'; // Importa los iconos según sea necesario
+import { FiHome, FiUsers,FiPlusCircle } from 'react-icons/fi'; // Importa los iconos según sea necesario
 
 const Sidebar = () => {
   return (
@@ -22,6 +22,15 @@ const Sidebar = () => {
             <span>Users</span>
           </Link>
         </li>
+
+        <li className="p-4">
+          <Link to="/create-project" className="flex items-center space-x-2 hover:bg-gray-800 rounded py-2 px-4">
+            <FiPlusCircle className="text-xl" />
+            <span>Crear Proyecto</span>
+          </Link>
+        </li>
+
+
         {/* Agrega más enlaces para otras secciones si es necesario */}
       </ul>
     </div>

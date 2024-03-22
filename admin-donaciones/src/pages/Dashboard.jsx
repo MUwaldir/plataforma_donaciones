@@ -14,15 +14,20 @@ const Dashboard = () => {
   }, []);
   return (
     
-      <div className="container flex-grow  mt-16 ">
-        <div className="flex relative">
-          <Sidebar />
-          <div className="ml-4 flex-1">
-            <h2 className="text-2xl font-semibold mb-4">Proyectos</h2>
-            <ProjectList projects={projects} />
-          </div>
+    <div className="container flex-grow mt-16">
+    <div className="flex relative">
+      <Sidebar />
+      <div className="ml-4 flex-1">
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-2xl font-semibold">Proyectos</h2>
+          <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+            Crear Proyecto
+          </button>
         </div>
+        <ProjectList projects={projects} />
       </div>
+    </div>
+  </div>
    
   );
 };

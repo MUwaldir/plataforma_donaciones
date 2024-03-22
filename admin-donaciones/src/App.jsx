@@ -22,7 +22,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route exact path="/" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/projects/create" element={<CreateProject />} />
+        <Route path="/create-project" element={<CreateProject />} />
         <Route path="/projects/list" element={<ProjectList />} />
         <Route path="/projects/:id" element={<ProjectDetails />} />
         <Route path="/projectedit/:id" element={<EditProject />} />
