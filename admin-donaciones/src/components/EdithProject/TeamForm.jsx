@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 const URL_API = "http://localhost:3001/api";
-const TeamForm = ({ team }) => {
+const urlpruebaiamgenes = "https://source.unsplash.com/random";
+const TeamForm = ({ team ,idproyecto}) => {
   const [editedTeam, setEditedTeam] = useState(team);
-  const idProject = team[0].proyecto;
+
  
   const handleTeamMemberChange = (index, field, value) => {
     console.log(index + " " + field + " " + value);
@@ -11,7 +12,30 @@ const TeamForm = ({ team }) => {
     setEditedTeam(updatedTeam);
   };
 
-  const handleRemoveTeamMember = (index) => {
+  const handleRemoveTeamMember = async (id,index) => {
+    if (!id) {
+        const updatedEquipo = [...editedTeam];
+        updatedEquipo.splice(index, 1);
+        setEditedTeam(updatedEquipo);
+      } else {
+        const response = await fetch(
+          `http://localhost:3001/api/deleteequipo/${id}`,
+          {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" },
+          }
+        );
+        const data =await response.json();
+  
+        if (data.success) {
+          console.log(data);
+          const updatedEquipo = [...editedTeam];
+          updatedEquipo.splice(index, 1);
+          setEditedTeam(updatedEquipo);
+        } else {
+          console.log("Error al elminar Testimonio");
+        }
+      }
     const updatedTeam = [...editedTeam];
     updatedTeam.splice(index, 1);
     setEditedTeam(updatedTeam);
@@ -25,10 +49,14 @@ const TeamForm = ({ team }) => {
     const updateEquipo = await editedTeam[index];
   
     if(!id){
-        const response = await fetch(`${URL_API}/createequipo/${idProject}`, {
+        console.log(editedTeam)
+        console.log(updateEquipo)
+        const enviarData = await {...updateEquipo, imagen: urlpruebaiamgenes}
+        console.log(enviarData)
+        const response = await fetch(`${URL_API}/createequipo/${idproyecto}`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(updateEquipo),
+            body: JSON.stringify(enviarData),
           });
           const data = await response.json();
           editedTeam[index]  = data.equipo
@@ -57,7 +85,7 @@ const TeamForm = ({ team }) => {
         {editedTeam.map((member, index) => (
           <div
             key={index}
-            className="mb-8 w-full grid grid-cols-2 gap-6 border border-spacing-2 border-gray-300 rounded-md"
+            className="mb-8 w-full grid grid-cols-3 gap-6 border border-spacing-2 border-gray-300 rounded-md"
           >
             <div>
               <div className="col-span-1">
@@ -112,8 +140,12 @@ const TeamForm = ({ team }) => {
                 placeholder="Descripción"
               ></textarea>
             </div>
+            <div className="w-20">
+                <img src={member.imagen} alt="" />
+                <input type="file" />
+            </div>
             <button
-              onClick={() => handleRemoveTeamMember(index)}
+              onClick={() => handleRemoveTeamMember(member._id,index)}
               className="col-span-3 px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none w-24"
             >
               Eliminar

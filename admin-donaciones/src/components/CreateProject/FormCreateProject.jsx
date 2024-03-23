@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import Joi from "joi";
 const urlpruebaiamgenes = "https://source.unsplash.com/random";
 const img = [
   "https://images.pexels.com/photos/17316989/pexels-photo-17316989/free-photo-of-blanco-y-negro-escritorio-mesa-investigacion.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
@@ -42,6 +43,100 @@ const FormCreateProject = () => {
       },
     ],
   });
+  const [errores, setErrores] = useState({});
+
+  const handleValidation = (formData) => {
+    const newErrors = {};
+    let isValid = true;
+    // Validar ubicacion
+    if (!formData.ubicacion.latitud.trim()) {
+      newErrors.ubicacion = {
+        ...newErrors.ubicacion,
+        latitud: "La latitud es requerida",
+      };
+    }
+    if (!formData.ubicacion.longitud.trim()) {
+      newErrors.ubicacion = {
+        ...newErrors.ubicacion,
+        longitud: "La longitud es requerida",
+      };
+    }
+    if (!formData.ubicacion.direccion.trim()) {
+      newErrors.ubicacion = {
+        ...newErrors.ubicacion,
+        direccion: "La dirección es requerida",
+      };
+    }
+
+    // Validar otros campos
+    if (!formData.titulo.trim()) {
+      newErrors.titulo = "El título es requerido";
+    }
+    if (!formData.descripcion.trim()) {
+      newErrors.descripcion = "La descripción es requerida";
+    }
+    if (!formData.monto_meta.trim()) {
+      newErrors.monto_meta = "La monto meta es requerida";
+    }
+
+    if (!formData.organizacion.trim()) {
+      newErrors.organizacion = "La organizacion es requerida";
+    }
+    if (!formData.categoria.trim()) {
+      newErrors.categoria = "La categoria es requerida";
+    }
+    if (!formData.miembros.trim()) {
+      newErrors.miembros = "el nuemro de miembros es requerida";
+    }
+    if (formData.imagenes.length === 0) {
+      newErrors.imagenes = "Las imagenes es requerida";
+    }
+
+    // Validar otros campos similares
+
+    // Validar cuentas bancarias
+    formData.cuentas_bancarias.forEach((cuenta, index) => {
+      if (cuenta && typeof cuenta.soles === "string" && !cuenta.soles.trim()) {
+        newErrors.cuentas_bancarias = {
+          ...newErrors.cuentas_bancarias,
+          soles: "El campo soles es requerido",
+        };
+      }
+      if (
+        cuenta &&
+        typeof cuenta.dolares === "string" &&
+        !cuenta.dolares.trim()
+      ) {
+        newErrors.cuentas_bancarias = {
+          ...newErrors.cuentas_bancarias,
+          dolares: "El campo dólares es requerido",
+        };
+      }
+    });
+
+   
+
+    formData.monederos_digitales.forEach((monedero, index) => {
+      for (const key in monedero) {
+        if (!monedero[key].toString().trim()) {
+          if (!newErrors[`monederos_digitales_${index}_${key}`]) {
+            newErrors[
+              `monederos_digitales_${index}_${key}`
+            ] = `El campo ${key} es requerido`;
+          }
+          isValid = false;
+        }
+      }
+    });
+
+    // Validar testimonio, contacto, equipo y otros campos similares de arreglos
+
+    // Finalmente, establecer los errores
+    setErrores(newErrors);
+    return isValid;
+    // Realizar otras acciones si no hay errores
+  };
+  console.log(errores);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -50,7 +145,10 @@ const FormCreateProject = () => {
       ...formData,
       [name]: value,
     });
+    
   };
+
+ 
   const handleChangeUbicacion = (e) => {
     const { name, value } = e.target;
     console.log(name, value);
@@ -138,23 +236,32 @@ const FormCreateProject = () => {
     setFormData(uploadImagen);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-        fetch(URL_API+"/createproject",{
-            method: "POST",
-            headers:{ "Content-Type": "application/json" },
-            body: JSON.stringify(formData)
+     await handleValidation(formData);
+    // Valida todos los campos del formulario antes de enviarlo
+    // console.log(validateForm(formData));
+    if (!errores) {
+      try {
+        fetch(URL_API + "/createproject", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
         })
-        .then(response => response.json())
-        .then(data => console.log(data))
-
-    } catch (error) {
+          .then((response) => response.json())
+          .then((data) => console.log(data));
+      } catch (error) {
         console.log(error);
+      }
+    } else {
+      console.log("Formulario inválido. Por favor, corrija los errores.");
     }
     // Aquí puedes enviar los datos al servidor
     console.log(formData);
   };
+  //   useEffect(() => {
+  //     handleValidation(formData);
+  //   }, [formData]);
 
   const handleQuitar = (index, group) => {
     switch (group) {
@@ -164,6 +271,9 @@ const FormCreateProject = () => {
         setFormData({ ...formData, contacto: nuevosContactos });
         break;
       case "testimonio":
+        const nuevosTestimonios = [...formData.testimonio];
+        nuevosTestimonios.splice(index, 1);
+        setFormData({ ...formData, testimonio: nuevosTestimonios });
         break;
       case "equipo":
         const nuevosEquipos = [...formData.equipo];
@@ -178,6 +288,7 @@ const FormCreateProject = () => {
   };
 
   console.log(formData);
+
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-md">
       <form onSubmit={handleSubmit}>
@@ -185,6 +296,9 @@ const FormCreateProject = () => {
           <label className="block text-sm font-bold mb-2" htmlFor="titulo">
             Título:
           </label>
+          {errores.titulo && (
+            <div className="text-red-500 text-sm">{errores.titulo}</div>
+          )}
           <input
             id="titulo"
             type="text"
@@ -198,6 +312,9 @@ const FormCreateProject = () => {
           <label className="block text-sm font-bold mb-2" htmlFor="descripcion">
             Descripción:
           </label>
+          {errores.descripcion && (
+            <div className="text-red-500 text-sm">{errores.descripcion}</div>
+          )}
           <textarea
             id="descripcion"
             name="descripcion"
@@ -210,6 +327,9 @@ const FormCreateProject = () => {
           <label className="block text-sm font-bold mb-2" htmlFor="monto_meta">
             Monto Meta:
           </label>
+          {errores.monto_meta && (
+            <div className="text-red-500 text-sm">{errores.monto_meta}</div>
+          )}
           <input
             id="monto_meta"
             type="number"
@@ -226,6 +346,9 @@ const FormCreateProject = () => {
           >
             Organización:
           </label>
+          {errores.organizacion && (
+            <div className="text-red-500 text-sm">{errores.organizacion}</div>
+          )}
           <input
             id="organizacion"
             type="text"
@@ -240,6 +363,9 @@ const FormCreateProject = () => {
           <label className="block text-sm font-bold mb-2" htmlFor="categoria">
             Categoría:
           </label>
+          {errores.categoria && (
+            <div className="text-red-500 text-sm">{errores.categoria}</div>
+          )}
           <select
             id="categoria"
             name="categoria"
@@ -265,6 +391,9 @@ const FormCreateProject = () => {
           <label className="block text-sm font-bold mb-2" htmlFor="miembros">
             Número de Miembros:
           </label>
+          {errores.miembros && (
+            <div className="text-red-500 text-sm">{errores.miembros}</div>
+          )}
           <input
             id="miembros"
             type="number"
@@ -274,8 +403,10 @@ const FormCreateProject = () => {
             className="form-input w-full p-2 border border-gray-300 rounded"
           />
         </div>
+        {/* ubicacion latritud longitud */}
         <div>
           <h2 className="block text-sm font-bold mb-2">Ubicación</h2>
+
           <div className="w-full flex">
             <div className="mb-4 w-1/2 mr-1">
               <label className="block text-sm font-bold mb-2" htmlFor="latitud">
@@ -289,6 +420,11 @@ const FormCreateProject = () => {
                 onChange={handleChangeUbicacion}
                 className="form-input w-full p-2 border border-gray-300 rounded"
               />
+              {errores.ubicacion && (
+                <div className="text-red-500 text-sm">
+                  {errores.ubicacion.latitud}
+                </div>
+              )}
             </div>
             <div className="mb-4 w-1/2">
               <label
@@ -305,6 +441,11 @@ const FormCreateProject = () => {
                 onChange={handleChangeUbicacion}
                 className="form-input w-full p-2 border border-gray-300 rounded"
               />
+              {errores.ubicacion && (
+                <div className="text-red-500 text-sm">
+                  {errores.ubicacion.longitud}
+                </div>
+              )}
             </div>
           </div>
 
@@ -312,6 +453,11 @@ const FormCreateProject = () => {
             <label className="block text-sm font-bold mb-2" htmlFor="direccion">
               Dirección:
             </label>
+            {errores.ubicacion && (
+              <div className="text-red-500 text-sm">
+                {errores.ubicacion.direccion}
+              </div>
+            )}
             <input
               id="direccion"
               type="text"
@@ -327,6 +473,10 @@ const FormCreateProject = () => {
           <label className="block text-sm font-bold mb-2" htmlFor="imagenes">
             Imágenes:
           </label>
+          {errores.imagenes && (
+            <div className="text-red-500 text-sm">{errores.imagenes}</div>
+          )}
+
           <input
             id="imagenes"
             type="file"
@@ -344,24 +494,31 @@ const FormCreateProject = () => {
             <h3 className="text-lg font-bold mb-2">Cuentas Bancarias BCP</h3>
             {formData.cuentas_bancarias.map((cuenta, index) => (
               <div key={`cuenta_${index}`} className="flex items-center mb-4">
-                <label htmlFor={`cuenta_${index}`} className="mr-2 font-bold">
-                  {Object.keys(cuenta)}:
-                </label>
-                <input
-                  id={`cuenta_${index}`}
-                  type="text"
-                  value={Object.values(cuenta)}
-                  onChange={(e) =>
-                    handleChangeArrays(
-                      index,
-                      Object.keys(cuenta),
-                      e.target.value,
-                      "cuentas_bancarias"
-                    )
-                  }
-                  placeholder="123456789"
-                  className="form-input w-full py-2 px-3 border border-gray-300 rounded"
-                />
+                <div>
+                  {errores.cuentas_bancarias && (
+                    <div className="text-red-500 text-sm">
+                      {errores.cuentas_bancarias[Object.keys(cuenta)]}
+                    </div>
+                  )}
+                  <label htmlFor={`cuenta_${index}`} className="mr-2 font-bold">
+                    {Object.keys(cuenta)}:
+                  </label>
+                  <input
+                    id={`cuenta_${index}`}
+                    type="text"
+                    value={Object.values(cuenta)}
+                    onChange={(e) =>
+                      handleChangeArrays(
+                        index,
+                        Object.keys(cuenta),
+                        e.target.value,
+                        "cuentas_bancarias"
+                      )
+                    }
+                    placeholder="123456789"
+                    className="form-input w-full py-2 px-3 border border-gray-300 rounded"
+                  />
+                </div>
               </div>
             ))}
           </div>
@@ -402,6 +559,11 @@ const FormCreateProject = () => {
                           }
                           className="form-input w-full py-2 px-3 border border-gray-300 rounded"
                         />
+                        {errores[`monederos_digitales_${index}_${key}`] && (
+                          <div className="text-red-500 text-sm">
+                            {errores[`monederos_digitales_${index}_${key}`]}
+                          </div>
+                        )}
                       </React.Fragment>
                     </div>
                   ))}
@@ -418,8 +580,18 @@ const FormCreateProject = () => {
             <h3 className="text-lg font-semibold mb-4">Testimonios</h3>
             {formData.testimonio.map((testimonio, index) => (
               <div key={`testimonio_${index}`} className="mb-4">
-                <div className="flex items-center mb-2">
+                <div className="">
                   <span className="mr-2 font-bold">{index + 1}.</span>
+                  {index > 0 && (
+                    <span
+                      className="ml-2 bg-red-500 text-white px-2 py-1  rounded cursor-pointer"
+                      onClick={() => handleQuitar(index, "testimonio")}
+                    >
+                      Quitar
+                    </span>
+                  )}
+                </div>
+                <div className="flex items-center my-2">
                   <input
                     type="text"
                     value={testimonio.nombre}
@@ -473,7 +645,7 @@ const FormCreateProject = () => {
                       onClick={() => handleQuitar(index, "contacto")}
                       className="bg-red-500 text-white py-1 px-2 rounded ml-2"
                     >
-                      X
+                      quitar
                     </button>
                   )}
                 </p>
@@ -623,7 +795,12 @@ const FormCreateProject = () => {
           </div>
         </div>
         {/* ... */}
-        <button type="submit">Crear Proyecto</button>
+        <button
+          type="submit"
+          className="bg-green-500 hover:bg-green-600 p-2 rounded-md text-white"
+        >
+          Crear Proyecto
+        </button>
       </form>
     </div>
   );

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 const URL_API = "http://localhost:3001/api";
-const ContactsForm = ({ contacts }) => {
+const ContactsForm = ({ contacts, idproyecto }) => {
   const [editedContacts, setEditedContacts] = useState(contacts);
 
   const handleContactChange = (index, field, value) => {
@@ -19,18 +19,32 @@ const ContactsForm = ({ contacts }) => {
     setEditedContacts([...editedContacts, { tipo: "", valor: "" }]);
   };
 
-  const handleSaveChanges = async (id) => {
+  const handleSaveChanges = async (id, index) => {
+    if (!id) {
+      const updateContacto = await editedContacts[index];
 
-
-    const updateContacto = await editedContacts.find((con) => con._id === id);
-
-    const response = await fetch(`${URL_API}/updatecontacto/${id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(updateContacto),
-    });
-    const data = await response.json();
-    console.log(data);
+      const response = await fetch(`${URL_API}/createcontacto/${idproyecto}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updateContacto),
+      });
+      const data = await response.json();
+      setEditedContacts[index] = data.contacto;
+      console.log(data);
+    } else {
+      try {
+        const updateContacto = await editedContacts[index];
+        const response = await fetch(`${URL_API}/updatecontacto/${id}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(updateContacto),
+        });
+        const data = await response.json();
+        console.log(data);
+      } catch (error) {
+        console.error({ error: error.message });
+      }
+    }
   };
 
   return (
@@ -61,10 +75,14 @@ const ContactsForm = ({ contacts }) => {
             Eliminar
           </button>
           <button
-            onClick={() => handleSaveChanges(contact._id)}
-            className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none"
+            onClick={() => handleSaveChanges(contact._id, index)}
+            className={`px-4 py-2  text-white rounded-md ${
+              contact._id
+                ? "bg-blue-500 hover:bg-blue-600"
+                : "bg-green-500 hover:bg-green-600"
+            }  focus:outline-none`}
           >
-            Guardar cambios
+            {contact._id ? "Guardar cambios" : "Crear Conatcto"}
           </button>
         </div>
       ))}

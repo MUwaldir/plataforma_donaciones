@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { getUsers, getRoles, deleteUser, updateRole } from '../utils/utils'; // Importa las funciones de la API para obtener y manipular datos
+import React, { useState, useEffect } from "react";
+import { getUsers, getRoles, deleteUser, updateRole } from "../utils/utils"; // Importa las funciones de la API para obtener y manipular datos
+import Sidebar from "../components/Dashboard/Sidebar";
 
 const UsersAndRoles = () => {
   // Define estados para almacenar los usuarios y los roles
@@ -21,42 +22,56 @@ const UsersAndRoles = () => {
   const handleDeleteUser = async (userId) => {
     await deleteUser(userId); // Llama a la función para eliminar un usuario
     // Actualiza la lista de usuarios después de eliminar uno
-    setUsers(users.filter(user => user.id !== userId));
+    setUsers(users.filter((user) => user.id !== userId));
   };
 
   // Función para actualizar el rol de un usuario
   const handleUpdateRole = async (userId, roleId) => {
     await updateRole(userId, roleId); // Llama a la función para actualizar el rol de un usuario
     // Actualiza el estado de usuarios para reflejar el cambio de rol
-    setUsers(users.map(user => {
-      if (user.id === userId) {
-        return { ...user, roleId };
-      }
-      return user;
-    }));
+    setUsers(
+      users.map((user) => {
+        if (user.id === userId) {
+          return { ...user, roleId };
+        }
+        return user;
+      })
+    );
   };
 
   return (
-    <div>
-    <h1>Users and Roles</h1>
-    {/* Renderizar la lista de usuarios */}
-    <ul>
-      {users.map(user => (
-        <li key={user.id}>
-          <span>{user.name}</span>
-          <span>{user.email}</span>
-          {/* Botón para eliminar un usuario */}
-          <button onClick={() => handleDeleteUser(user.id)}>Delete</button>
-          {/* Selección de roles para actualizar el rol de un usuario */}
-          <select onChange={(e) => handleUpdateRole(user.id, e.target.value)} value={user.roleId}>
-            {roles.map(role => (
-              <option key={role.id} value={role.id}>{role.name}</option>
+    <div className="mt-16">
+      <div>
+        <Sidebar />
+        <div className="ml-64">
+          <h1>Users and Roles</h1>
+          {/* Renderizar la lista de usuarios */}
+          <ul>
+            {users.map((user) => (
+              <li key={user.id}>
+                <span>{user.name}</span>
+                <span>{user.email}</span>
+                {/* Botón para eliminar un usuario */}
+                <button onClick={() => handleDeleteUser(user.id)}>
+                  Delete
+                </button>
+                {/* Selección de roles para actualizar el rol de un usuario */}
+                <select
+                  onChange={(e) => handleUpdateRole(user.id, e.target.value)}
+                  value={user.roleId}
+                >
+                  {roles.map((role) => (
+                    <option key={role.id} value={role.id}>
+                      {role.name}
+                    </option>
+                  ))}
+                </select>
+              </li>
             ))}
-          </select>
-        </li>
-      ))}
-    </ul>
-  </div>
+          </ul>
+        </div>
+      </div>
+    </div>
   );
 };
 

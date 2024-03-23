@@ -40,19 +40,20 @@ const EditProject = () => {
         return (
           <TestimonialsForm
             testimonials={project.testimonios}
-            
+            idproyecto = {id}
           />
         );
       case "contacts":
         return (
           <ContactsForm
             contacts={project.contactos}
-            
+            idproyecto = {id}
           />
         );
       case "team":
         return (
-          <TeamForm team={project.equipo}  />
+          <TeamForm team={project.equipo} 
+          idproyecto = {id} />
         );
       default:
         return null;

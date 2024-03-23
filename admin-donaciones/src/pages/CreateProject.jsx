@@ -7,7 +7,7 @@ const CreateProject = () => {
     <div className="flex-grow mt-16">
       <Sidebar />
       <div className="ml-64">
-        <FormCreateProject/>
+        <FormCreateProject />
       </div>
     </div>
   );

@@ -11,6 +11,7 @@ import ProjectDetails from "./pages/ProjectDetails";
 import EditProject from "./pages/EditProject";
 import UserAndRoles from "./pages/UserAndRoles";
 import Navbar from "./components/Layout/Navbar";
+import Registro from "./pages/Registro";
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
     <Navbar/>
       <Routes>
         <Route path="/login" element={<Login />} />
+        <Route path="/registro" element={<Registro />} />
+
         <Route exact path="/" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/create-project" element={<CreateProject />} />
