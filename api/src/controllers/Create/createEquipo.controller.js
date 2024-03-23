@@ -4,7 +4,7 @@ import Proyecto from "../../models/ProyectoSchema.js";
 const createEquipo = async (req, res, next) => {
   const { ideproject } = req.params;
   try {
-    const { nombre, cargo, descripcion } = req.body;
+    const { nombre, cargo, descripcion,imagen } = req.body;
 
     const existProject = await Proyecto.findById(ideproject);
     if (!existProject) {
@@ -15,6 +15,7 @@ const createEquipo = async (req, res, next) => {
         nombre,
         cargo,
         descripcion,
+        imagen,
         proyecto:ideproject
     });
 

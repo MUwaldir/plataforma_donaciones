@@ -11,6 +11,13 @@ import updateProjectEquipo from "../controllers/Update/updateProjectEquipo.contr
 import updateProjectTestimonio from "../controllers/Update/updateProjectTestimonios.controller.js";
 import updateProjectContacto from "../controllers/Update/updateProjectContactos.controller.js";
 import createEquipo from "../controllers/Create/createEquipo.controller.js";
+import deleteProyect from "../controllers/Delete/deleteProyect.controller.js";
+
+import deleteTestimonio from "../controllers/Delete/deleteTestimonio.controller.js";
+import deleteContacto from "../controllers/Delete/deleteContacto.controller.js";
+import deleteEquipo from "../controllers/Delete/deleteEquipo.controller.js";
+import createTestimonio from "../controllers/Create/createTestimonio.controller.js";
+import createContacto from "../controllers/Create/createContacto.controller.js";
 
 const routesProjects = Router();
 
@@ -31,9 +38,20 @@ routesProjects.patch('/updatetestimonio/:idtestimonio',updateProjectTestimonio )
 
 // update equipo integrantes
 routesProjects.patch('/updateequipo/:idequipo',updateProjectEquipo )
+
 // CREATE EQUIPO
 routesProjects.post('/createequipo/:ideproject',createEquipo )
+// CREATE TESTIMONIO
+routesProjects.post('/createtestimonio/:ideproject',createTestimonio )
+// CREATE cONATCTO
+routesProjects.post('/createcontacto/:ideproject',createContacto)
 
+
+// DELETE
+routesProjects.delete('/deleteproyecto/:id',deleteProyect )
+routesProjects.delete('/deletetestimonio/:idtestimonio',deleteTestimonio )
+routesProjects.delete('/deletecontacto/:idcontacto',deleteContacto )
+routesProjects.delete('/deleteequipo/:idequipo',deleteEquipo )
 
 
 export default routesProjects;
