@@ -2,6 +2,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
+import Sidebar from "../components/Dashboard/Sidebar";
 
 const ProjectList = ({ projects, handleDeleteProject }) => {
   const settings = {
@@ -16,7 +17,7 @@ const ProjectList = ({ projects, handleDeleteProject }) => {
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ml-64 md:ml-64 lg:ml-64">
+    <div className="grid sm:grid-cols-2  lg:grid-cols-3 gap-6 px-4">
       {projects &&
         projects.map((project) => (
           <div
@@ -48,7 +49,7 @@ const ProjectList = ({ projects, handleDeleteProject }) => {
                     onClick={() => handleDeleteProject(project._id)}
                     className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:bg-red-600"
                   >
-                    Eliminar 
+                    Eliminar
                   </button>
                 </div>
               </div>

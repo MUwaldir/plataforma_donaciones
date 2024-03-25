@@ -2,8 +2,11 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { login } from '../utils/utils';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  const navigate = useNavigate();
   return (
     <div className="  max-w-md mx-auto my-auto p-10 bg-white shadow-md rounded-md">
       <h2 className="text-2xl font-bold mb-4">Iniciar Sesión</h2>
@@ -13,11 +16,17 @@ const Login = () => {
           email: Yup.string().email('Email inválido').required('El email es requerido'),
           contrasena: Yup.string().required('La contraseña es requerida'),
         })}
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
+        onSubmit={ async(values, { setSubmitting }) => {
+          console.log(values);
+          const data = await login(values)
+          const token = data.token
+          localStorage.setItem("token",token)
+          console.log(data)
+          navigate('/dashboard')
+          // setTimeout(() => {
+          //   alert(JSON.stringify(values, null, 2));
+          //   setSubmitting(false);
+          // }, 400);
         }}
       >
         <Form className="space-y-4 ">

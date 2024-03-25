@@ -14,6 +14,10 @@ import Navbar from "./components/Layout/Navbar";
 import Registro from "./pages/Registro";
 
 function App() {
+  const [openSlider, setOpenSlider] = useState(false);
+  const handleOpenSilder = () => {
+    setOpenSlider(!openSlider);
+  };
   return (
     <>
     <div className="min-h-screen flex flex-col">
@@ -21,15 +25,15 @@ function App() {
     <Navbar/>
       <Routes>
         <Route path="/login" element={<Login />} />
-        <Route path="/registro" element={<Registro />} />
+        {/* <Route path="/registro" element={<Registro />} /> */}
 
         <Route exact path="/" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/create-project" element={<CreateProject />} />
+        <Route path="/dashboard" element={<Dashboard openSlider={openSlider} handleOpenSilder={handleOpenSilder} />} />
+        <Route path="/create-project" element={<CreateProject openSlider={openSlider} handleOpenSilder={handleOpenSilder} />} />
         <Route path="/projects/list" element={<ProjectList />} />
         <Route path="/projects/:id" element={<ProjectDetails />} />
         <Route path="/projectedit/:id" element={<EditProject />} />
-        <Route path="/users" element={<UserAndRoles />} />
+        <Route path="/users" element={<UserAndRoles openSlider={openSlider} handleOpenSilder={handleOpenSilder} />} />
         {/* Otras rutas */}
       </Routes>
     </div>

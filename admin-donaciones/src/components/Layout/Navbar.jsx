@@ -1,16 +1,23 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
+import { Link, useNavigate } from 'react-router-dom';
+const token = localStorage.getItem('token');
 const Navbar = () => {
+  const navigate= useNavigate()
+  const handleCerrarSesion = () => {
+    localStorage.removeItem("token")
+    navigate('/login')
+  }
   return (
     <nav className="fixed w-full bg-gray-800 shadow-lg h-16 flex items-center z-50">
       <div className="container mx-auto px-4">
         <div className="flex justify-between">
           {/* Logo */}
           <div className="flex items-center">
-            <Link to="/" className="text-white font-bold">
+             
+            <Link to="/dashboard" className="text-white font-bold">
               DonacionesApp
             </Link>
+       
           </div>
 
           {/* Menu de navegación */}
@@ -31,18 +38,30 @@ const Navbar = () => {
 
           {/* Botón de inicio de sesión */}
           <div className="flex items-center">
+            {token ?
+            
+            <Link
+            onClick={handleCerrarSesion}
+              to="/login"
+              className="text-white font-semibold bg-indigo-500 px-4 py-2 rounded-md hover:bg-indigo-600"
+            >
+              cerrar Session
+            </Link>
+            :
+            
             <Link
               to="/login"
               className="text-white font-semibold bg-indigo-500 px-4 py-2 rounded-md hover:bg-indigo-600"
             >
               Iniciar sesión
             </Link>
-            <Link
+            }
+            {/* <Link
               to="/registro"
               className="text-white font-semibold bg-indigo-500 px-4 py-2 rounded-md hover:bg-indigo-600"
             >
               Registro
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>

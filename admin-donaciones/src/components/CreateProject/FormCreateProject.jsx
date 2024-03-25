@@ -13,7 +13,7 @@ const img2 = [
 ];
 
 const URL_API = "http://localhost:3001/api";
-const FormCreateProject = () => {
+const FormCreateProject = (openSlider, handleOpenSilder) => {
   const [formData, setFormData] = useState({
     ubicacion: {
       latitud: "",

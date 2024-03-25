@@ -3,11 +3,12 @@ import { getProject } from "../utils/utilsProjects";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 const ProjectDetail = () => {
+  const token = localStorage.getItem("token")
   const { id } = useParams();
   const [project, setProject] = useState({});
   useEffect(() => {
     const fetchProject = async (id) => {
-      const fetchProject = await getProject(id); // Llama a la función para obtener el proyexto
+      const fetchProject = await getProject(id,token); // Llama a la función para obtener el proyexto
 
       setProject(fetchProject);
     };

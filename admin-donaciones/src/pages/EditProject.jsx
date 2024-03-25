@@ -8,16 +8,17 @@ import { getProject } from "../utils/utilsProjects";
 // import { getProject, updateProject } from '../utils'; // Importa las funciones necesarias para obtener y actualizar el proyecto
 
 const EditProject = () => {
+  const token = localStorage.getItem('token');
   const { id } = useParams();
   const [project, setProject] = useState({});
   const [section, setSection] = useState("project");
 
   useEffect(() => {
-    const fetchProjectData = async (id) => {
-      const fetchedProject = await getProject(id);
+    const fetchProjectData = async (id,token) => {
+      const fetchedProject = await getProject(id,token);
       setProject(fetchedProject);
     };
-    fetchProjectData(id);
+    fetchProjectData(id,token);
 }, [id]);
 // console.log(project);
 
