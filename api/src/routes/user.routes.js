@@ -1,14 +1,23 @@
 import { Router } from "express";
-const routes = Router();
+import { createUser } from "../controllers/User/createUser.controller.js";
+import getUsers from "../controllers/User/getUsers.controller.js";
+import LoginUser from "../controllers/User/LoginUser.controller.js";
+import { authenticateToken, verificarRol } from "../controllers/Autenticacion/AuthToken.controller.js";
+import { updateUser } from "../controllers/User/updateUser.controller.js";
+const routesUser = Router();
 
-routes.post('/login', (req, res) => {
-    const { email,password} = req.body;
-    const data = { email: email, password: password };
-    console.log( email ,' ', password);
-    res.status(200).json(data);
-})
-routes.get('/', (req,res,next) => {
+// LOGIN
+routesUser.post('/login', LoginUser)
+
+// creacion
+routesUser.post('/createuser',authenticateToken,verificarRol(['superadmin']), createUser)
+routesUser.patch('/updateuser/:iduser',authenticateToken,verificarRol(['superadmin']), updateUser)
+
+routesUser.post('/getusers',authenticateToken,verificarRol(['admin',]) , getUsers)
+
+
+routesUser.get('/', (req,res,next) => {
     res.send('Welcome to the first app platform donation page')
 });
 
-export default routes;
+export default routesUser;
